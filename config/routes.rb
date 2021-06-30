@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root 'blogs#index'
   get 'about', to: 'blogs#about'
   get 'signup', to: 'users#new'
-  resources :posts 
   resources :users, except: [:new]
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
+  # resources :posts 
 end
