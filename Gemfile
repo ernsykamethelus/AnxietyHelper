@@ -56,3 +56,10 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'bcrypt', '~> 3.1', '>= 3.1.12'
+gem 'omniauth-google-oauth2', '~> 1.0'
+gem 'omniauth', '~> 2.0', '>= 2.0.4'
+gem 'dotenv-rails', '~> 2.1', '>= 2.1.1'
+gem 'bootstrap', '~> 4.0'
+gem 'sassc-rails', '~> 2.1.2'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+gem 'javascript', '~> 0.0.2'

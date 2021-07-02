@@ -1,4 +1,4 @@
 module ApplicationHelper
-    def gravatar_for(user)
-    end
+    # def gravatar_for(user)
+    # end
 end

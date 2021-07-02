@@ -1,4 +1,27 @@
-<h1>Welcome to AnxietyHelper</h1>
+<%= link_to "Anxiety Helper", root_path, class: "navbar-brand", id: "logo" %>
 
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog</title>
+    <%= csrf_meta_tags %>
+
+  </head>
+<body>
+<h1>Welcome to AnxietyHelper</h1>
+<h2> “Our anxiety does not come from thinking about the future, but from wanting to control it.” – Kahlil Gibran </h2>
 <%= link_to 'About', about_path %>
 <%= link_to 'Home', root_path %>
+
+
+<%= render 'layouts/navigation' %>
+<% flash.each do |name, msg| %>
+    <ul>
+     <li><%= msg %></li>
+    </ul>
+<% end %>
+<%= yield %>
+</body>
+</html>
+
+
