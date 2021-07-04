@@ -7,14 +7,12 @@ class PostsController < ApplicationController
     end
 
     def create 
-        # render plain: params[:post].inspect
         @post = Post.new(post_params)
-        @post.user = User.first 
+        @post.user_id = session[:user_id]
         if @post.save 
-            # flash[:sucess] = "Post was successfully created"
-        redirect_to post_path(@post)
+            redirect_to post_path(@post) 
         else 
-            render 'new'
+            render :new
     end
 end
 

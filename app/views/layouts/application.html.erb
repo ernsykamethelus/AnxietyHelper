@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AnxietyHelper</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+  </head>
+
+  <div> 
+  <%= link_to "Log Out", logout_path, method: :delete %>
+  <%= link_to "Create New Post", new_post_path %>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>
