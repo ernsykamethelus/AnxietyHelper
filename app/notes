@@ -81,3 +81,5 @@ for blogs/index
 <% end %>
  </div>
 </div>
+
+<p><%= flash[:error] %></p>

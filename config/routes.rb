@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   delete '/logout', to: 'sessions#destroy'
 
+  get 'auth/google_oauth2/callback', to: 'sessions#omniauth'
+
 
   resources :users, except: [:new]
   resources :posts 
