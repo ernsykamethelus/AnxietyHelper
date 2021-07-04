@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
     before_action :set_post, only: [:edit, :update, :show, :destroy]
+    before_action :require_user
 
     def new 
         @post = Post.new 
@@ -10,7 +11,7 @@ class PostsController < ApplicationController
         @post = Post.new(post_params)
         @post.user = User.first 
         if @post.save 
-            flash[:sucess] = "Post was successfully created"
+            # flash[:sucess] = "Post was successfully created"
         redirect_to post_path(@post)
         else 
             render 'new'
@@ -43,7 +44,7 @@ end
     def destroy
         # @post = Post .find(params[:id])
         @post.destroy 
-        flash[:sucess] = "Post was deleted"
+        # flash[:sucess] = "Post was deleted"
         redirect_to posts_path
     end
 
@@ -54,5 +55,6 @@ end
 
     def set_post
         @post = Post .find(params[:id])
+        redirect_to posts_path if @post
     end
 end

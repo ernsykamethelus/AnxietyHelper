@@ -9,8 +9,11 @@
     <div class="post-title">
      <%= link_to post.title, post_path(post) %>
     </div>
-    <div class="article-body">
+    <div class="post-body">
      <%= truncate(post.description, length: 100) %>
+     <small>Created by: <%= post.user.username if post.user %>,
+      <%= time_ago_in_words(post.created_at) %> ago, 
+       last updated: <%= time_ago_in_words(post.updated_at) %> ago</small>
     </div>
     <div class="post-actions">
      <%= link_to "Edit", edit_post_path(post), class: "btn btn-xs btn-primary" %>
