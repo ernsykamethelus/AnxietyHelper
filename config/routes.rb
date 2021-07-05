@@ -6,14 +6,11 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   delete '/logout', to: 'sessions#destroy'
 
-  get '/auth/:provider/callback' => 'sessions#create'
-
+  get '/auth/:provider/callback', to: 'sessions#create'
 
   resources :users, except: [:new]
   resources :posts 
   resources :blogs
-end
+ end
 
 
-  # root 'blogs#index'
-  # get 'about', to: 'blogs#about'

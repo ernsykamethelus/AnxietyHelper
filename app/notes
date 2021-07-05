@@ -83,3 +83,6 @@ for blogs/index
 </div>
 
 <p><%= flash[:error] %></p>
+
+  # root 'blogs#index'
+  # get 'about', to: 'blogs#about'
