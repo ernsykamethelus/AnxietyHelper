@@ -1,5 +1,8 @@
 class Post < ActiveRecord::Base 
     belongs_to :user 
+    # has_many :comments 
+    # has_many :comments, through: :comments #people who have commented
+    validate :not_a_duplicate
     validates :title, presence: true, length: { minimum: 5, maximum: 40}
     validates :description, presence: true, length: { minimum: 20, maximum: 500}
     validates :user_id, presence: true

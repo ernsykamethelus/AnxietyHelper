@@ -27,10 +27,8 @@ end
     def update 
         # @post = Post.find(params[:id])
         if @post.update(post_params)
-            flash[:sucess] = "Post was successfully updated."
             redirect_to post_path(@post)
         else 
-            flash[:sucess] = "Post was not successfully updated."
             render 'edit'
         end
     end
@@ -53,6 +51,6 @@ end
 
     def set_post
         @post = Post .find(params[:id])
-        redirect_to posts_path if @post
+        redirect_to posts_path if !@post
     end
 end

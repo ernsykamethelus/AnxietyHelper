@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
 
-
     def index
     end
 
@@ -18,6 +17,7 @@ class SessionsController < ApplicationController
             @user = User.create_by_google_omniauth(auth)
             session[:user_id] = @user.id
             redirect_to user_path(@user) 
+        else
 
         #example to know if user exist in the system
         @user = User.find_by(username: params[:user][:username])
