@@ -1,14 +1,16 @@
 class SessionsController < ApplicationController
 
     def index
+        redirect_to user_path(current_user.id) if logged_in?
     end
 
     def destroy
         session.delete(:user_id)
-        redirect_to '/'
+        redirect_to "/"
     end
 
     def new
+        redirect_to user_path(current_user.id) if logged_in?
     end
 
     def create
@@ -20,9 +22,11 @@ class SessionsController < ApplicationController
         else
 
         #example to know if user exist in the system
-        @user = User.find_by(username: params[:user][:username])
+        # @user = User.find_by(username: params[:user][:username])
+        @user = User.find_by(email: params[:user][:email])
         # did we find someone and did they put in the right password
-        if @user && @user.authenticate(password: params[:user][:password])
+        # if @user && @user.authenticate(password: params[:user][:password])
+        if @user && @user.authenticate(params[:user][:password])
             session[:user_id] = @user.id
             redirect_to user_path(@user)
         else 
@@ -41,6 +45,6 @@ def omniauth
   private
 
     def auth
-      request.env['omniauth.auth']
+      request.env["omniauth.auth"]
     end
 end

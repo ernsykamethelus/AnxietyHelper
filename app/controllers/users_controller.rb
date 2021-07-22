@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
     def new 
-        # @user = User.new
+        redirect_to user_path(current_user.id) if logged_in?
+        @user = User.new
     end
 
     def create 
@@ -14,14 +15,22 @@ class UsersController < ApplicationController
         end
     end
 
-    # def edit 
-    #     @user = User.find(params[:id])
-    # end
+    def edit 
+        redirect_to_if_not_required
+        @user = User.find_by_id(params[:id])
+    end
+
+    def index 
+        require_user
+        @user = User.all
+    end
 
     def update 
-        @user = User.find(params[:id])
-        if @user.update(user_params)
-            redirect_to posts_path
+        redirect_to_if_not_required
+        @user = User.find_by(id: params[:id])
+        @user.update(user_params)
+        if @user.valid?
+            redirect_to user_path(@user)
         else 
             render 'edit'
         end
@@ -30,12 +39,12 @@ class UsersController < ApplicationController
     def show 
         require_user
         @user = User.find_by_id(params[:id])
-        redirect_to '/' if !@user
+        redirect_to "/" if !@user
     end
 
     private 
     
     def user_params
-        params.require(:user).permit(:username, :email, :password)
+        params.require(:user).permit(:username, :email, :password, session[:user_id])
     end
 end
